@@ -1,11 +1,12 @@
 package main
 
 import (
+	"time"
+
 	"github.com/atotto/clipboard"
 	keyboard "github.com/jteeuwen/keyboard/termbox"
 	"github.com/legolord208/stdutil"
 	"github.com/nsf/termbox-go"
-	"time"
 )
 
 type position struct {
@@ -28,16 +29,14 @@ var animations = true
 var disableMove bool
 
 func main() {
-	// Init
+	screen = makeScreen()
+
 	err := termbox.Init()
 	if err != nil {
 		stdutil.PrintErr("Couldn't init termbox", err)
 		return
 	}
 	defer termbox.Close()
-
-	screen = makeScreen()
-
 	kb := keyboard.New()
 
 	// Bindings

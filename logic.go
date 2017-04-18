@@ -113,12 +113,10 @@ func shift(shiftX int, shiftY int, override bool) {
 	if disableMove && !override {
 		return
 	}
-	status = "Copying"
 	copy := makeScreen()
 
 	for x := 0; x < WIDTH; x++ {
 		for y := 0; y < HEIGHT; y++ {
-			status = "In loop"
 			shiftedX := x - shiftX
 			shiftedY := y - shiftY
 
