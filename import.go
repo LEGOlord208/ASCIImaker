@@ -21,10 +21,10 @@ func fromString(str string) {
 	x := 0
 	y := 0
 	for _, c := range str {
-		if y >= HEIGHT {
+		if y >= height {
 			break
 		}
-		if c == '\n' || x >= WIDTH {
+		if c == '\n' || x >= width {
 			x = 0
 			y++
 
@@ -37,7 +37,7 @@ func fromString(str string) {
 	}
 
 	if animations {
-		fill(position{x: 0, y: 0}, position{x: WIDTH - 1, y: HEIGHT - 1}, func(x, y int, state bool) bool {
+		fill(position{x: 0, y: 0}, position{x: width - 1, y: height - 1}, func(x, y int, state bool) bool {
 			return copy[y][x]
 		})
 	} else {

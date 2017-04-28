@@ -63,14 +63,14 @@ func move(x int, y int, override bool) {
 func teleport(x int, y int) {
 	if x < 0 {
 		x = 0
-	} else if x >= WIDTH {
-		x = WIDTH - 1
+	} else if x >= width {
+		x = width - 1
 	}
 
 	if y < 0 {
 		y = 0
-	} else if y >= HEIGHT {
-		y = HEIGHT - 1
+	} else if y >= height {
+		y = height - 1
 	}
 
 	character.x = x
@@ -115,13 +115,13 @@ func shift(shiftX int, shiftY int, override bool) {
 	}
 	copy := makeScreen()
 
-	for x := 0; x < WIDTH; x++ {
-		for y := 0; y < HEIGHT; y++ {
+	for x := 0; x < width; x++ {
+		for y := 0; y < height; y++ {
 			shiftedX := x - shiftX
 			shiftedY := y - shiftY
 
 			tile := false
-			if shiftedX >= 0 && shiftedY >= 0 && shiftedX < WIDTH && shiftedY < HEIGHT {
+			if shiftedX >= 0 && shiftedY >= 0 && shiftedX < width && shiftedY < height {
 				tile = screen[shiftedY][shiftedX]
 			}
 

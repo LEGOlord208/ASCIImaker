@@ -1,10 +1,11 @@
 package main
 
 import (
+	"time"
+
 	"github.com/atotto/clipboard"
 	"github.com/legolord208/stdutil"
 	"github.com/nsf/termbox-go"
-	"time"
 )
 
 var status string
@@ -45,9 +46,9 @@ func printscreen() {
 				}
 			} else if char {
 				c = '#'
-			} else if x == CENTER_X {
+			} else if x == centerX {
 				c = '|'
-			} else if y == CENTER_Y {
+			} else if y == centerY {
 				c = '-'
 			}
 
@@ -60,24 +61,24 @@ func printscreen() {
 		}
 	}
 
-	printtext(0, HEIGHT+3, "Press space to start a selection, and again to end.")
-	printtext(0, HEIGHT+4, "Press q or escape to quit.")
+	printtext(0, height+3, "Press space to start a selection, and again to end.")
+	printtext(0, height+4, "Press q or escape to quit.")
 	if page1 {
-		printtext(0, HEIGHT+5, "Press w/a/s/d to quikcly move within a larger grid.")
-		printtext(0, HEIGHT+6, "Press c quickly twice to clear the screen.")
+		printtext(0, height+5, "Press w/a/s/d to quikcly move within a larger grid.")
+		printtext(0, height+6, "Press c quickly twice to clear the screen.")
 	} else {
-		printtext(0, HEIGHT+5, "Press shift + w/a/s/d to move whole screen.")
-		printtext(0, HEIGHT+6, "Press minus to toggle animations.")
+		printtext(0, height+5, "Press shift + w/a/s/d to move whole screen.")
+		printtext(0, height+6, "Press minus to toggle animations.")
 	}
 
 	if clipboard.Unsupported {
-		printtext(0, HEIGHT+8, "Clipboard unsupported")
+		printtext(0, height+8, "Clipboard unsupported")
 	} else {
-		printtext(0, HEIGHT+8, "Press Ctrl+E to export to clipboard")
-		printtext(0, HEIGHT+9, "Press Ctrl+D to export as unicode squares")
-		printtext(0, HEIGHT+10, "Press Ctrl+L to load/import from clipboard")
+		printtext(0, height+8, "Press Ctrl+E to export to clipboard")
+		printtext(0, height+9, "Press Ctrl+D to export as unicode squares")
+		printtext(0, height+10, "Press Ctrl+L to load/import from clipboard")
 	}
-	printtext(0, HEIGHT+12, status)
+	printtext(0, height+12, status)
 
 	termbox.Flush()
 }
