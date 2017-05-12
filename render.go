@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"github.com/atotto/clipboard"
-	"github.com/legolord208/stdutil"
 	"github.com/nsf/termbox-go"
 )
 
@@ -22,9 +21,7 @@ func initpageschedule() {
 func printscreen() {
 	err := termbox.Clear(termbox.ColorDefault, termbox.ColorDefault)
 	if err != nil {
-		stdutil.PrintErr("Error clearing screen", err)
-		running = false
-		return
+		panic(err)
 	}
 
 	var start position
@@ -80,7 +77,10 @@ func printscreen() {
 	}
 	printtext(0, height+12, status)
 
-	termbox.Flush()
+	err := termbox.Flush()
+	if err != nil {
+		panic(err)
+	}
 }
 
 func printtext(x int, y int, text string) {
