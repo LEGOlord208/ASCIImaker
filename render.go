@@ -77,7 +77,7 @@ func printscreen() {
 	}
 	printtext(0, height+12, status)
 
-	err := termbox.Flush()
+	err = termbox.Flush()
 	if err != nil {
 		panic(err)
 	}
